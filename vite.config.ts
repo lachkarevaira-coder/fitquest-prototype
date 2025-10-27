@@ -5,10 +5,9 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
-  server: {
-    port: 3000,
-    host: true,
-    strictPort: true,
-    allowedHosts: ['*.csb.app', '*.codesandbox.io'] // ← важно для CSB
-  }
-})
+ server: {
+  port: 3000,
+  host: true,
+  strictPort: true,
+  allowedHosts: ['.csb.app', '.codesandbox.io'] // ← правильно для всех поддоменов CSB
+}
