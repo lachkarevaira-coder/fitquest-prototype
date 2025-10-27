@@ -5,9 +5,12 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
- server: {
+server: {
   port: 3000,
   host: true,
   strictPort: true,
-  allowedHosts: ['.csb.app', '.codesandbox.io'] // ← правильно для всех поддоменов CSB
+  // Разрешаем все поддомены CodeSandbox через RegExp
+  allowedHosts: [/\.csb\.app$/, /\.codesandbox\.io$/],
+  // HMR через 443, чтобы не ругался в превью
+  hmr: { clientPort: 443 }
 }
