@@ -11,7 +11,7 @@ export default defineConfig({
     host: true,
     port: 3000,
     strictPort: true,
-    allowedHosts: ['vmkqgg-3000.csb.app', /\.csb\.app$/, /\.codesandbox\.io$/, 'localhost', '127.0.0.1'],
+    allowedHosts: ['vmkqqg-3000.csb.app', /\.csb\.app$/, /\.codesandbox\.io$/, 'localhost', '127.0.0.1'],
     hmr: { clientPort: 443 }
   }
 })
