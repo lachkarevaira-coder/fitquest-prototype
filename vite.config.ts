@@ -4,12 +4,14 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
+  resolve: {
+    alias: { '@': path.resolve(__dirname, 'src') }
+  },
   server: {
     host: true,
     port: 3000,
     strictPort: true,
-    allowedHosts: [/\.csb\.app$/, /\.codesandbox\.io$/, 'localhost', '127.0.0.1'],
+    allowedHosts: ['vmkqgg-3000.csb.app', /\.csb\.app$/, /\.codesandbox\.io$/, 'localhost', '127.0.0.1'],
     hmr: { clientPort: 443 }
   }
 })
