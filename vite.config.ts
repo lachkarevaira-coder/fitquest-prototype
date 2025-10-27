@@ -4,13 +4,5 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src')
-    }
-  },
-  server: {
-    host: true,
-    port: 2222 // CodeSandbox любит фикс-порт, можно убрать если мешает
-  }
+  resolve: { alias: { '@': path.resolve(__dirname, 'src') } }
 })
