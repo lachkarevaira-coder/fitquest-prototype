@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --radius: 14px;
@@ -11,6 +9,7 @@ body,
 #root {
   height: 100%;
 }
+
 body {
   @apply bg-white text-gray-900;
 }
