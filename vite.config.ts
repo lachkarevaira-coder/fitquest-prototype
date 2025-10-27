@@ -9,9 +9,10 @@ export default defineConfig({
     alias: { '@': path.resolve(__dirname, 'src') },
   },
   server: {
-  host: true,          // = 0.0.0.0 (обязательно для CSB)
-  port: 5173,          // дефолт Vite, часто у CSB с ним меньше проблем
+  host: true,
+  port: 5173,
   strictPort: true,
   allowedHosts: [/\.csb\.app$/, /\.codesandbox\.io$/],
-  hmr: { clientPort: 443 } // чтобы HMR ходил по https
+  hmr: { clientPort: 443 } // без host, чтобы не залипало на старом домене
 }
+
