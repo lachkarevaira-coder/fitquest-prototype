@@ -2,26 +2,29 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import tailwindcss from '@tailwindcss/postcss' // ← подключаем плагин напрямую
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: { '@': path.resolve(__dirname, 'src') },
   },
+  css: {
+    // Встроенная настройка PostCSS — Vite больше
+    // не будет искать postcss.config.* в проекте
+    postcss: {
+      plugins: [tailwindcss],
+    },
+  },
   server: {
     port: 3000,
     host: true,
     strictPort: true,
-    // Разрешаем конкретный домен превью + все поддомены CSB
     allowedHosts: [
-      'vmkqgg-3000.csb.app',      // ← вставь ИМЕННО ТО, что видишь в превью
       /\.csb\.app$/,
-      /\.codesandbox\.io$/
+      /\.codesandbox\.io$/,
+      'vmkqgg-3000.csb.app' // ← твой текущий домен превью
     ],
-    hmr: {
-      clientPort: 443,            // HMR через https-порт
-      host: 'vmkqgg-3000.csb.app' // ← тот же хост, что выше
-    },
-    cors: true
-  }
+    hmr: { clientPort: 443, host: 'vmkqgg-3000.csb.app' }
+  },
 })
