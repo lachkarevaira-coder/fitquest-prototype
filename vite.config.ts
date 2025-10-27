@@ -14,14 +14,14 @@ export default defineConfig({
     strictPort: true,
     // ВАЖНО: точное имя текущего превью + запасные варианты
     allowedHosts: [
-      'vmkqgg-3000.csb.app',   // ← как в белой странице
+      'vmkqqg-3000.csb.app',   // ← как в белой странице
       'localhost',
       '127.0.0.1',
       /\.csb\.app$/,
       /\.codesandbox\.io$/
     ],
     hmr: {
-      host: 'vmkqgg-3000.csb.app',
+      host: 'vmkqqg-3000.csb.app',
       clientPort: 443
     }
   }
