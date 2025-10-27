@@ -9,20 +9,9 @@ export default defineConfig({
     alias: { '@': path.resolve(__dirname, 'src') },
   },
   server: {
-    port: 3000,
-    host: true,
-    strictPort: true,
-    // ВАЖНО: точное имя текущего превью + запасные варианты
-    allowedHosts: [
-      'vmkqqg-3000.csb.app',   // ← как в белой странице
-      'localhost',
-      '127.0.0.1',
-      /\.csb\.app$/,
-      /\.codesandbox\.io$/
-    ],
-    hmr: {
-      host: 'vmkqqg-3000.csb.app',
-      clientPort: 443
-    }
-  }
-})
+  host: true,          // = 0.0.0.0 (обязательно для CSB)
+  port: 5173,          // дефолт Vite, часто у CSB с ним меньше проблем
+  strictPort: true,
+  allowedHosts: [/\.csb\.app$/, /\.codesandbox\.io$/],
+  hmr: { clientPort: 443 } // чтобы HMR ходил по https
+}
