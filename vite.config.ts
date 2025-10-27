@@ -6,17 +6,22 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-    },
+    alias: { '@': path.resolve(__dirname, 'src') },
   },
   server: {
     port: 3000,
     host: true,
     strictPort: true,
-    // Разрешаем CodeSandbox-домены (маски через RegExp)
-    allowedHosts: [/\.csb\.app$/, /\.codesandbox\.io$/],
-    // HMR через 443 для превью во фрейме
-    hmr: { clientPort: 443 },
-  },
+    // Разрешаем конкретный домен превью + все поддомены CSB
+    allowedHosts: [
+      'vmkqgg-3000.csb.app',      // ← вставь ИМЕННО ТО, что видишь в превью
+      /\.csb\.app$/,
+      /\.codesandbox\.io$/
+    ],
+    hmr: {
+      clientPort: 443,            // HMR через https-порт
+      host: 'vmkqgg-3000.csb.app' // ← тот же хост, что выше
+    },
+    cors: true
+  }
 })
