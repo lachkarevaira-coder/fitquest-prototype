@@ -11,6 +11,17 @@ body,
   height: 100%;
 }
 
+/* Общие стили для тела */
 body {
   @apply bg-white text-gray-900;
+
+  font-family: "MedievalSharp", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+/* Чтобы элементы формы тоже использовали этот шрифт */
+button,
+input,
+textarea {
+  font-family: inherit;
 }
