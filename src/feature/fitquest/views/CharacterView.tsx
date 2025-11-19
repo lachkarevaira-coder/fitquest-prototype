@@ -1,7 +1,7 @@
 // src/feature/fitquest/views/CharacterView.tsx
 import React from "react";
 import type { AppState } from "@/feature/fitquest/types";
-import { ProgressPill, BranchStat } from "@/feature/fitquest/components"; // если у тебя файл components.tsx лежит прямо в feature/fitquest (без папки), поменяй импорт на '@/feature/fitquest/components'
+import { ProgressPill, BranchStat } from "@/feature/fitquest/components";
 import {
   getHeroImageByXP,
   rankNameByLevel,
@@ -10,9 +10,11 @@ import {
 
 export default function CharacterView({
   state,
+  onStartTraining,
   gotoSkills,
 }: {
   state: AppState;
+  onStartTraining: () => void;
   gotoSkills: () => void;
 }) {
   const level = xpToLevel(state.totalXP, "character");
@@ -38,8 +40,9 @@ export default function CharacterView({
           <ProgressPill label="Rank" value={heroRank.name} />
         </div>
 
+        {/* основная кнопка: старт тренировки */}
         <button
-          onClick={gotoSkills}
+          onClick={onStartTraining}
           className="mt-4 px-5 py-2 rounded-full font-extrabold text-[#0b231b]"
           style={{
             background: "linear-gradient(#52e6b8,#34d399)",
@@ -47,7 +50,15 @@ export default function CharacterView({
             boxShadow: "0 6px 0 rgba(30,90,60,.5),0 10px 20px rgba(0,0,0,.35)",
           }}
         >
-          open skills
+          Start training
+        </button>
+
+        {/* запасная маленькая ссылка на Skills, если вдруг понадобится */}
+        <button
+          onClick={gotoSkills}
+          className="mt-2 text-xs underline text-yellow-200/80 hover:text-yellow-100"
+        >
+          View skills
         </button>
       </div>
 
